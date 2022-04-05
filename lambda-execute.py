@@ -56,7 +56,7 @@ def invoke_lambda(lambda_arn: str, event_payload: dict) -> dict:
     return lambda_response
 
 
-def get_metrics_within_five_minutes():
+def get_metrics_within_five_minutes() -> dict:
     """
     Get the most recent metrics output by the Lambda.
     """
