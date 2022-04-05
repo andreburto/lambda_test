@@ -1,0 +1,4 @@
+functions:
+  hello_world:
+    include:
+    - ./serverless/lambda_function.py

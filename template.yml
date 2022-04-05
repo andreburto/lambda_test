@@ -1,0 +1,27 @@
+Transform: AWS::Serverless-2016-10-31
+Description: A demo template for lambda stuff.
+
+Globals:
+  Function:
+    Runtime: nodejs12.x
+    Timeout: 180
+    Handler: lambda_function.lambda_handler
+
+Parameters:
+  MetricNumber:
+    Type: String
+    Default: 10
+
+Resources:
+  HelloWorldFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ./dist/hello_world.zip
+      Environment:
+        Variables:
+          METRIC_COUNT: !Ref MetricNumber
+      PackageType: Zip
+      Policies:
+        - arn:aws:iam::aws:policy/AWSLambda_FullAccess
+        - arn:aws:iam::aws:policy/CloudWatchFullAccess
+      Runtime: python3.9
